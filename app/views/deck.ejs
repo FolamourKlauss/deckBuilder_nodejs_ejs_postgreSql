@@ -1,0 +1,25 @@
+<%- include('./partials/header') %>
+
+<h1>Mon deck</h1>
+
+<%if (deck && deck.length != 0) {%>
+    <div class="cardsContainer">
+        <% deck.forEach( (card) => { %>
+    
+        <div class="card">
+            <a href="/card/<%= card.id %>">
+            <img src="/visuals/<%= card.visual_name %>" alt="<%= card.name %> illustration">
+            <p class="cardName"><%= card.name %></p>
+            </a>
+            <a class="link--removeCard" title="Retirer du deck" href="/deck/remove/<%= card.id %>">[ - ]</a>
+        </div>
+    
+        <% }) %>
+    </div>
+
+<%} else {%>
+    <div>
+        <p style="text-align: center ;">[ Mon deck est vide ]</p>
+    </div>
+<%}%>
+<%- include('./partials/footer') %>
